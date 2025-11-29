@@ -29,13 +29,21 @@ vim.api.nvim_create_autocmd("User", {
             preset = "modern",
         })
         wk.add({
-                {
-                    "<leader>?",
-                    function()
-                        require("which-key").show({ global = false })
-                    end,
-                    desc = "Buffer Local Keymaps (which-key)",
-                },
+            {
+                "<leader>?",
+                function()
+                    require("which-key").show({ global = false })
+                end,
+                desc = "Buffer Local Keymaps (which-key)",
+            },
+            {
+                "<leader>!",
+                function()
+                    require("which-key").show({ global = true })
+                end,
+                desc = "Buffer Global Keymaps (which-key)",
+            },
+
         })
     end,
 })

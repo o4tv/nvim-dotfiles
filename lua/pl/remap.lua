@@ -5,7 +5,7 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("n", "<leader>wq", ":wq<CR>")
 vim.keymap.set("n", "<leader>q", ":qa<CR>")
-vim.keymap.set("n", "<leader>d", ":w<CR>")
+vim.keymap.set({"n", "i"}, "<C-s>", ":w<CR>")
 
 vim.keymap.set("n", "<leader>tw", function() vim.wo.wrap = not vim.wo.wrap end, { desc = "Toggle wrap" })
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
@@ -18,8 +18,8 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
--- hyprctl switchxkblayout by-tech-gaming-keyboard next
-vim.keymap.set({"n", "i", "v"}, "<C-i>", function() vim.system({"hyprctl", "switchxkblayout", "by-tech-gaming-keyboard", "next"}) end, { desc = "Toggle wrap" })
+-- hyprctl switchxkblayout by-tech-gaming-keyboard-1 next
+vim.keymap.set({"n", "i", "v"}, "<C-i>", function() vim.system({"hyprctl", "switchxkblayout", "by-tech-gaming-keyboard-1", "next"}) end, { desc = "kb layout" })
 
 local map = vim.api.nvim_set_keymap
 map('n', '<C-h>', '<C-w>h', { noremap = true })
@@ -89,6 +89,7 @@ vim.keymap.set('n', '<leader>e', '<cmd>NvimTreeToggle<CR>')
 
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = 'Telescope find files' })
+vim.keymap.set('n', '<leader><leader>', builtin.find_files, { desc = 'Telescope find files' })
 vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = 'Telescope live grep' })
 vim.keymap.set('n', '<leader>sb', builtin.buffers, { desc = 'Telescope buffers' })
 vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = 'Telescope help tags' })
