@@ -19,7 +19,10 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 -- hyprctl switchxkblayout by-tech-gaming-keyboard-1 next
-vim.keymap.set({"n", "i", "v"}, "<C-i>", function() vim.system({"hyprctl", "switchxkblayout", "by-tech-gaming-keyboard-1", "next"}) end, { desc = "kb layout" })
+vim.keymap.set({"n", "i", "v"}, "<C-i>", function()
+    vim.system({"hyprctl", "switchxkblayout", "by-tech-gaming-keyboard", "next"})
+    vim.system({"hyprctl", "switchxkblayout", "by-tech-gaming-keyboard-1", "next"})
+end, { desc = "kb layout" })
 
 local map = vim.api.nvim_set_keymap
 map('n', '<C-h>', '<C-w>h', { noremap = true })
