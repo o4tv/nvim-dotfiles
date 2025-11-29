@@ -18,6 +18,9 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
+-- hyprctl switchxkblayout by-tech-gaming-keyboard next
+vim.keymap.set({"n", "i", "v"}, "<C-i>", function() vim.system({"hyprctl", "switchxkblayout", "by-tech-gaming-keyboard", "next"}) end, { desc = "Toggle wrap" })
+
 local map = vim.api.nvim_set_keymap
 map('n', '<C-h>', '<C-w>h', { noremap = true })
 map('n', '<C-j>', '<C-w>j', { noremap = true })
@@ -29,6 +32,7 @@ map('n', '<C-Down>', '<C-w>-', { noremap = true })
 map('n', '<C-Up>', '<C-w>+', { noremap = true })
 map('n', '<C-Right>', '<C-w>>', { noremap = true })
 
+-- pros plugin ok
 vim.keymap.set({ "n", "x", "o" }, "S", function()
   require("flash").jump()
 end, { desc = "Flash" })
