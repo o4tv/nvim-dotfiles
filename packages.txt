@@ -17,3 +17,4 @@ MeanderingProgrammer/render-markdown.nvim
 tadmccorkle/markdown.nvim
 folke/which-key.nvim
 iamcco/markdown-preview.nvim
+3rd/image.nvim
