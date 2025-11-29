@@ -6,6 +6,7 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("n", "<leader>wq", ":wq<CR>")
 vim.keymap.set("n", "<leader>q", ":qa<CR>")
 vim.keymap.set({"n", "i"}, "<C-s>", "<cmd>:w<CR>")
+vim.keymap.set({"n", "i"}, "<M-q>", "<cmd>:q<CR>")
 
 vim.keymap.set("n", "<leader>tw", function() vim.wo.wrap = not vim.wo.wrap end, { desc = "Toggle wrap" })
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
