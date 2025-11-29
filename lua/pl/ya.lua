@@ -1,6 +1,0 @@
-require 'pl.cmp'
-require 'pl.lsp'
-require 'pl.setups'
-require 'pl.autocmds'
-require 'pl.remap'
-require 'pl.transparency'

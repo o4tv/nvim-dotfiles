@@ -1,7 +1,3 @@
-require 'pack'
-require 'pl.theme'
-require 'pl.ya'
-require 'options'
-require 'pl.vl'
+require 'tavin'
 
 print("on")
