@@ -1,3 +1,4 @@
+-- QOL
 require("nvim-autopairs").setup({
     map_cr = true
 })
@@ -6,7 +7,6 @@ require("toggleterm").setup({
     open_mapping = [[<C-\>]],
     size = 20
 })
-
 
 local function my_on_attach(bufnr)
     local api = require "nvim-tree.api"
@@ -36,6 +36,7 @@ require("nvim-tree").setup({
     },
 })
 
+-- funcionalidades
 require('render-markdown').setup({
     completions = { lsp = { enabled = true } },
 })
@@ -57,34 +58,6 @@ require("image").setup({
         },
     },
 })
-
-require("dashboard").setup({
-    theme = 'hyper',
-    config = {
-        -- header = {
-        --     "abu"
-        -- },
-        packages = { enable = false },
-        week_header = {
-            enable = true,
-        },
-        shortcut = {
-            {
-                desc = 'files',
-                action = 'Telescope find_files',
-                key = 'f',
-            },
-            {
-                desc = 'quit',
-                action = 'q',
-                key = 'q',
-            }
-        },
-        footer = {},
-    },
-
-})
-
 require('gitsigns').setup{
   on_attach = function(bufnr)
     local gitsigns = require('gitsigns')
@@ -154,6 +127,34 @@ require('gitsigns').setup{
   end
 }
 
+-- style
+require("dashboard").setup({
+    theme = 'hyper',
+    config = {
+        -- header = {
+        --     "abu"
+        -- },
+        packages = { enable = false },
+        week_header = {
+            enable = true,
+        },
+        shortcut = {
+            {
+                desc = 'files',
+                action = 'Telescope find_files',
+                key = 'f',
+            },
+            {
+                desc = 'quit',
+                action = 'q',
+                key = 'q',
+            }
+        },
+        footer = {},
+    },
+
+})
+
 require("lualine").setup({
     options = {
         theme = 'ayu_mirage',
@@ -164,5 +165,9 @@ require("lualine").setup({
     }
 })
 
-require("barbar").setup({})
+require("barbar").setup({
+    sidebar_filetypes = {
+        NvimTree = true
+    }
+})
 
