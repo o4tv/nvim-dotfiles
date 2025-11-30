@@ -37,6 +37,7 @@ map('n', '<C-Up>', '<C-w>+', { noremap = true })
 map('n', '<C-Right>', '<C-w>>', { noremap = true })
 
 -- pros plugin ok
+--- flash
 vim.keymap.set({ "n", "x", "o" }, "S", function()
   require("flash").jump()
 end, { desc = "Flash" })
@@ -57,9 +58,7 @@ vim.keymap.set("c", "<c-s>", function()
   require("flash").toggle()
 end, { desc = "Toggle Flash Search" })
 
-
--- ~/.config/nvim/init.lua
-
+-- limpar plugins não usados pelo vim.pack
 local function pack_clean()
     local active_plugins = {}
     local unused_plugins = {}
@@ -87,10 +86,10 @@ end
 
 vim.keymap.set("n", "<leader>pc", pack_clean)
 
-
+--- toggle pro nvim tree
 vim.keymap.set('n', '<leader>e', '<cmd>NvimTreeToggle<CR>')
 
-
+--- telescope
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = 'Telescope find files' })
 vim.keymap.set('n', '<leader><leader>', builtin.find_files, { desc = 'Telescope find files' })

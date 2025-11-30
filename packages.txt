@@ -18,3 +18,5 @@ tadmccorkle/markdown.nvim
 folke/which-key.nvim
 iamcco/markdown-preview.nvim
 3rd/image.nvim
+nvimdev/dashboard-nvim
+lewis6991/gitsigns.nvim

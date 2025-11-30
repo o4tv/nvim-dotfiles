@@ -24,7 +24,6 @@ vim.opt.showcmd = true
 
 vim.opt.swapfile = false
 vim.opt.backup = false
--- vim.opt.undodir = os.getenv("HOME") .. "/.config/nvim/undodir"
 vim.opt.undofile = true
 vim.opt.clipboard = "unnamed"
 
@@ -35,11 +34,10 @@ vim.opt.smartcase = true
 
 vim.opt.termguicolors = true
 
-vim.opt.showmode = false
+vim.opt.showmode = true
 
 -- No automatic comment insertion
 vim.cmd([[autocmd FileType * set formatoptions-=ro]])
-
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1

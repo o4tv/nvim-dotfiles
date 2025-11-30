@@ -4,9 +4,17 @@
       "rev": "f13226770b4947eb7e66befbeb53c3db39f13e25",
       "src": "https://github.com/saghen/blink.cmp"
     },
+    "dashboard-nvim": {
+      "rev": "0775e567b6c0be96d01a61795f7b64c1758262f6",
+      "src": "https://github.com/nvimdev/dashboard-nvim"
+    },
     "flash.nvim": {
       "rev": "fcea7ff883235d9024dc41e638f164a450c14ca2",
       "src": "https://github.com/folke/flash.nvim"
+    },
+    "gitsigns.nvim": {
+      "rev": "5813e4878748805f1518cee7abb50fd7205a3a48",
+      "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "image.nvim": {
       "rev": "446a8a5cc7a3eae3185ee0c697732c32a5547a0b",
