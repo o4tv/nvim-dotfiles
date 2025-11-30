@@ -164,3 +164,5 @@ require("lualine").setup({
     }
 })
 
+require("barbar").setup({})
+

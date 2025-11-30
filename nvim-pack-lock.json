@@ -1,5 +1,9 @@
 {
   "plugins": {
+    "barbar.nvim": {
+      "rev": "fb4369940a07dda35fa4d7f54cf4a36aa00440e6",
+      "src": "https://github.com/romgrk/barbar.nvim"
+    },
     "blink.cmp": {
       "rev": "f13226770b4947eb7e66befbeb53c3db39f13e25",
       "src": "https://github.com/saghen/blink.cmp"
