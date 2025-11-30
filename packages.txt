@@ -20,3 +20,4 @@ iamcco/markdown-preview.nvim
 3rd/image.nvim
 nvimdev/dashboard-nvim
 lewis6991/gitsigns.nvim
+nvim-lualine/lualine.nvim
