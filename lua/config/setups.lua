@@ -140,6 +140,11 @@ require("dashboard").setup({
         },
         shortcut = {
             {
+                desc = 'live grep',
+                action = 'Telescope live_grep',
+                key = 's',
+            },
+            {
                 desc = 'files',
                 action = 'Telescope find_files',
                 key = 'f',

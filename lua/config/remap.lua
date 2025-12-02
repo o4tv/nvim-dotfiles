@@ -5,8 +5,8 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("n", "<leader>wq", ":wq<CR>")
 vim.keymap.set("n", "<leader>q", ":qa<CR>")
-vim.keymap.set({"n", "i"}, "<C-s>", "<cmd>:w<CR>")
-vim.keymap.set({"n", "i"}, "<M-q>", "<cmd>:q<CR>")
+vim.keymap.set({"n", "i"}, "<leader>s", "<cmd>:w<CR>")
+vim.keymap.set({"n", "i"}, "<M-S-q>", "<cmd>:q<CR>")
 
 vim.keymap.set("n", "<leader>tw", function() vim.wo.wrap = not vim.wo.wrap end, { desc = "Toggle wrap" })
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
@@ -58,7 +58,7 @@ vim.keymap.set("c", "<c-s>", function()
   require("flash").toggle()
 end, { desc = "Toggle Flash Search" })
 
--- limpar plugins não usados pelo vim.pack
+--- limpar plugins não usados pelo vim.pack
 local function pack_clean()
     local active_plugins = {}
     local unused_plugins = {}
@@ -83,11 +83,17 @@ local function pack_clean()
         vim.pack.del(unused_plugins)
     end
 end
-
 vim.keymap.set("n", "<leader>pc", pack_clean)
 
 --- toggle pro nvim tree
-vim.keymap.set('n', '<leader>e', '<cmd>NvimTreeToggle<CR>')
+local api = require("nvim-tree.api")
+vim.keymap.set('n', '<leader>e', function ()
+    if vim.bo.filetype == "NvimTree" then
+        api.tree.close()
+    else
+        api.tree.focus()
+    end
+end, { desc = "NvimTree" })
 
 --- telescope
 local builtin = require('telescope.builtin')
@@ -122,7 +128,7 @@ map('n', '<A-0>', '<Cmd>BufferLast<CR>',   { noremap = true, silent = true, desc
 map('n', '<A-p>', '<Cmd>BufferPin<CR>', { noremap = true, silent = true, desc = "Toggle pin buffer" })
 
 -- Close buffer
-map('n', '<A-c>', '<Cmd>BufferClose<CR>', { noremap = true, silent = true, desc = "Close buffer" })
+map('n', '<M-q>', '<Cmd>BufferClose<CR>', { noremap = true, silent = true, desc = "Close buffer" })
 
 -- Magic buffer-picking mode
 map('n', '<C-p>', '<Cmd>BufferPick<CR>',        { noremap = true, silent = true, desc = "Pick buffer" })

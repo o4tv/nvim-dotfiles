@@ -6,16 +6,6 @@ vim.api.nvim_create_autocmd("User", {
 })
 
 vim.cmd.syntax("off")
--- vim.api.nvim_create_autocmd("BufReadPost", {
---     pattern = "*",
---     callback = function()
---         -- can start a specific treesitter on a specific buffer also
---         -- vim.treesitter.start(0, "c")
---         vim.treesitter.start()
---     end,
---     once = true,
--- })
-
 vim.api.nvim_create_autocmd('FileType', {
   pattern = '*',
   callback = function() pcall(vim.treesitter.start) end,
@@ -48,4 +38,28 @@ vim.api.nvim_create_autocmd("User", {
     end,
 })
 
+-- abre o dashboard quando o utlimo buffer é fechado
+vim.api.nvim_create_autocmd("BufDelete", {
+    callback = function()
+        vim.schedule(function()
+            local buffers = vim.api.nvim_list_bufs()
+            local listed_buffers = {}
 
+            -- lista so os arquivos abertos
+            for _, buf in ipairs(buffers) do
+                if vim.api.nvim_get_option_value("buflisted", { buf = buf }) then
+                    -- ignora se o buffer é o dashboard
+                    if vim.api.nvim_get_option_value("filetype", { buf = buf }) ~= "dashboard" then
+                        table.insert(listed_buffers, buf)
+                    end
+                end
+            end
+
+            if #listed_buffers > 1 or (listed_buffers[1] and vim.api.nvim_buf_get_name(listed_buffers[1]) ~= "") then
+                return
+            end
+            vim.cmd("Dashboard")
+
+        end)
+    end,
+})
