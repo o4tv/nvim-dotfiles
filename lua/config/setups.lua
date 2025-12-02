@@ -155,6 +155,11 @@ require("dashboard").setup({
                 key = 'q',
             }
         },
+        project = {
+            enable = true,
+            limit = 8,
+            action = 'Telescope find_files cwd='
+        },
         footer = {},
     },
 
