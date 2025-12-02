@@ -181,3 +181,4 @@ require("barbar").setup({
     }
 })
 
+require("nvim-surround").setup({})
