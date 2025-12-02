@@ -22,3 +22,4 @@ nvimdev/dashboard-nvim
 lewis6991/gitsigns.nvim
 nvim-lualine/lualine.nvim
 romgrk/barbar.nvim
+lambdalisue/vim-suda
