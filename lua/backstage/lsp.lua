@@ -10,13 +10,15 @@ local servers = {
     },
     pyright = {},
     clangd = {},
-    -- jdtls = {},
+    jdtls = {},
     ts_ls = {},
+    sqlls = {},
 }
 
 for server, config in pairs(servers) do
     vim.lsp.config(server, config)
 end
+vim.lsp.enable('lua_ls')
 -- vim.lsp.config("*", { capabilities = require('blink.cmp').get_lsp_capabilities() })
 
 require("mason").setup()
@@ -27,7 +29,7 @@ require('mason-tool-installer').setup({
     ensure_installed = {
         'bashls',
         'clangd',
-        'lua_ls',
+        -- 'lua_ls',
         'stylua',
         'shellcheck',
         'editorconfig-checker',
@@ -35,6 +37,7 @@ require('mason-tool-installer').setup({
         'pyright',
         'jdtls',
         'ts_ls',
+        'sqlls',
     },
     integrations = {
         ['mason-lspconfig'] = true,

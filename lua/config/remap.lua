@@ -5,7 +5,8 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("n", "<leader>cd", "<cmd>cd %:p:h<CR>")
 -- vim.keymap.set("n", "<leader>wq", "<cmd>wq<CR>")
-vim.keymap.set("n", "<leader>q", "<cmd>qa<CR>")
+vim.api.nvim_set_keymap("n", "q", "<Cmd>qa<CR>", { noremap = false })
+vim.api.nvim_set_keymap("n", "Ç", ":", { noremap = false })
 vim.keymap.set("n", "<leader>w", "<cmd>w<CR>")
 vim.keymap.set({"n", "i"}, "<M-S-q>", "<cmd>q<CR>")
 
@@ -19,6 +20,8 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     vim.hl.on_yank()
   end,
 })
+
+vim.keymap.set({"v", "s"}, "<M-S-c>", '"+y', { noremap = true, silent = true })
 
 -- hyprctl switchxkblayout by-tech-gaming-keyboard-1 next
 vim.keymap.set({"n", "i", "v"}, "<C-i>", function()
