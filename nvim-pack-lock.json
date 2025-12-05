@@ -64,6 +64,10 @@
       "rev": "7a2c97cccd60abc559344042fefb1d5a85b3e33b",
       "src": "https://github.com/windwp/nvim-autopairs"
     },
+    "nvim-colorizer.lua": {
+      "rev": "a065833f35a3a7cc3ef137ac88b5381da2ba302e",
+      "src": "https://github.com/norcalli/nvim-colorizer.lua"
+    },
     "nvim-lspconfig": {
       "rev": "30a2b191bccf541ce1797946324c9329e90ec448",
       "src": "https://github.com/neovim/nvim-lspconfig"
