@@ -8,6 +8,7 @@ vim.keymap.set("n", "<leader>cd", "<cmd>cd %:p:h<CR>")
 vim.api.nvim_set_keymap("n", "q", "<Cmd>qa<CR>", { noremap = false })
 vim.api.nvim_set_keymap("n", "<C-q>", "<Cmd>q<CR>", { noremap = false })
 vim.api.nvim_set_keymap("n", "Ç", ":", { noremap = false })
+vim.api.nvim_set_keymap("n", "<leader>r", "<Cmd>restart<CR>", { noremap = true })
 vim.keymap.set("n", "<leader>w", "<cmd>w<CR>")
 vim.keymap.set({"n", "i"}, "<M-S-q>", "<cmd>q<CR>")
 
