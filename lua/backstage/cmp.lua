@@ -1,5 +1,8 @@
 require('blink.cmp').setup({
-    keymap = { preset = 'enter' },
+    keymap = {
+        preset = 'enter',
+        ["<Tab>"] = { vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Tab>", true, false, true), "n", true) },
+    },
     appearance = {
         nerd_font_variant = 'mono'
     },
