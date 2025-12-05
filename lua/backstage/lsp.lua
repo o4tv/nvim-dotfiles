@@ -5,8 +5,15 @@ local servers = {
         settings = {
             Lua = {
                 workspace = {
-                    library = vim.api.nvim_get_runtime_file("", true),
-                }
+                    checkThirdParty = false,
+                    -- library = vim.api.nvim_get_runtime_file("", true),
+                    library = {
+                        vim.env.VIMRUNTIME,
+                    },
+                    maxPreload = 2000,
+                    preloadFileSize = 1000,
+                },
+                telemetry = { enable = false },
             },
         }
     },
@@ -68,3 +75,6 @@ vim.diagnostic.config({
 require("nvim-treesitter.configs").setup({
     auto_install = true
 })
+
+require("fidget").setup({})
+

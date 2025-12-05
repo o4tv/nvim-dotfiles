@@ -24,3 +24,4 @@ nvim-lualine/lualine.nvim
 romgrk/barbar.nvim
 lambdalisue/vim-suda
 kylechui/nvim-surround
+j-hui/fidget.nvim
