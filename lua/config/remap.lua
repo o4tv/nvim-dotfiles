@@ -152,3 +152,9 @@ map('n', '<leader>bd', '<Cmd>BufferOrderByDirectory<CR>',    { noremap = true, s
 map('n', '<leader>bl', '<Cmd>BufferOrderByLanguage<CR>',     { noremap = true, silent = true, desc = "Order by language" })
 map('n', '<leader>bw', '<Cmd>BufferOrderByWindowNumber<CR>', { noremap = true, silent = true, desc = "Order by window number" })
 
+
+-- treesj recursive
+vim.keymap.set('n', '<leader>M', function()
+    require('treesj').toggle({ split = { recursive = true } })
+end)
+
