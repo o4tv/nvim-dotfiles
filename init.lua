@@ -1,3 +1,1 @@
 require 'tavin'
-
-print("on")

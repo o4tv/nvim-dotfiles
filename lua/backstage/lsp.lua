@@ -1,3 +1,5 @@
+-- configuraçao de cada ls
+-- vazio = padrao
 local servers = {
     lua_ls = {
         settings = {
@@ -15,12 +17,16 @@ local servers = {
     sqlls = {},
 }
 
+-- aplicaçao da configuraçao de cada um
 for server, config in pairs(servers) do
-    vim.lsp.config(server, config)
+    if config ~= {} then
+        vim.lsp.config(server, config)
+    end
 end
+-- excessao pq ta dando um erro na versao dada pelo mason
 vim.lsp.enable('lua_ls')
--- vim.lsp.config("*", { capabilities = require('blink.cmp').get_lsp_capabilities() })
 
+-- setup do mason + ativaçao automatica de cada ls
 require("mason").setup()
 require("mason-lspconfig").setup({
     automatic_enable = true,
@@ -29,6 +35,7 @@ require('mason-tool-installer').setup({
     ensure_installed = {
         'bashls',
         'clangd',
+        ---- desativado pq a versao da bugada
         -- 'lua_ls',
         'stylua',
         'shellcheck',
@@ -44,6 +51,7 @@ require('mason-tool-installer').setup({
     },
 })
 
+-- para os erros aparecerem em linha
 vim.diagnostic.config({
     underline = true,
     update_in_insert = false,
@@ -56,6 +64,7 @@ vim.diagnostic.config({
     signs = true,
 })
 
+-- nao sei pq dá esse warning
 require("nvim-treesitter.configs").setup({
     auto_install = true
 })

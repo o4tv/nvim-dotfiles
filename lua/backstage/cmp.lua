@@ -1,6 +1,7 @@
 require('blink.cmp').setup({
     keymap = {
         preset = 'enter',
+        -- tab nao funciona sem isso, nao sei o porquê
         ["<Tab>"] = { vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Tab>", true, false, true), "n", true) },
     },
     appearance = {

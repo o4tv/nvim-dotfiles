@@ -131,9 +131,6 @@ require('gitsigns').setup{
 require("dashboard").setup({
     theme = 'hyper',
     config = {
-        -- header = {
-        --     "abu"
-        -- },
         packages = { enable = false },
         week_header = {
             enable = true,
