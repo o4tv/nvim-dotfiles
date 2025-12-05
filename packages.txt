@@ -3,6 +3,7 @@ mason-org/mason.nvim
 mason-org/mason-lspconfig.nvim
 WhoIsSethDaniel/mason-tool-installer.nvim
 saghen/blink.cmp
+rafamadriz/friendly-snippets
 nvim-treesitter/nvim-treesitter
 windwp/nvim-autopairs
 folke/flash.nvim

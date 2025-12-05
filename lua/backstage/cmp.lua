@@ -22,6 +22,11 @@ require('blink.cmp').setup({
                 -- make lazydev completions top priority (see `:h blink.cmp`)
                 score_offset = 100,
             },
+            snippets = {
+                opts = {
+                    friendly_snippets = true,
+                }
+            }
         },
     },
     fuzzy = { implementation = "lua" }
