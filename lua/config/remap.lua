@@ -21,7 +21,12 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
+-- copiar e recortar selecao
 vim.keymap.set({"v", "s"}, "<M-S-c>", '"+y', { noremap = true, silent = true })
+vim.keymap.set({"v", "s"}, "<M-S-x>", '"+d', { noremap = true, silent = true })
+-- copiar e colar linha
+vim.keymap.set("n", "<M-S-c>", '"+yy', { noremap = true, silent = true })
+vim.keymap.set("n", "<M-S-x>", '"+dd', { noremap = true, silent = true })
 
 -- hyprctl switchxkblayout by-tech-gaming-keyboard-1 next
 vim.keymap.set({"n", "i", "v"}, "<C-i>", function()
