@@ -4,15 +4,15 @@ local servers = {
     lua_ls = {
         settings = {
             Lua = {
-                workspace = {
-                    checkThirdParty = false,
-                    -- library = vim.api.nvim_get_runtime_file("", true),
-                    library = {
-                        vim.env.VIMRUNTIME,
-                    },
-                    maxPreload = 2000,
-                    preloadFileSize = 1000,
-                },
+        --         workspace = {
+        --             checkThirdParty = false,
+        --             -- library = vim.api.nvim_get_runtime_file("", true),
+        --             -- library = {
+        --             --     vim.env.VIMRUNTIME,
+        --             -- },
+        --             maxPreload = 2000,
+        --             preloadFileSize = 1000,
+        --         },
                 telemetry = { enable = false },
             },
         }
@@ -30,8 +30,6 @@ for server, config in pairs(servers) do
         vim.lsp.config(server, config)
     end
 end
--- excessao pq ta dando um erro na versao dada pelo mason
-vim.lsp.enable('lua_ls')
 
 -- setup do mason + ativaçao automatica de cada ls
 require("mason").setup()
@@ -42,7 +40,8 @@ require('mason-tool-installer').setup({
     ensure_installed = {
         'bashls',
         'clangd',
-        ---- desativado pq a versao da bugada
+        ---- desativado por uma excessao na versao de uma lib
+        ---- ativado posteriormente no lazydev
         -- 'lua_ls',
         'stylua',
         'shellcheck',

@@ -25,3 +25,4 @@ romgrk/barbar.nvim
 lambdalisue/vim-suda
 kylechui/nvim-surround
 j-hui/fidget.nvim
+folke/lazydev.nvim

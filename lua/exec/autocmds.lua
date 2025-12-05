@@ -90,3 +90,18 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
+-- faz o setup do luals pra editar config do neovim
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "lua", -- O equivalente ao ft="lua"
+    callback = function()
+        require("lazydev").setup({
+            library = {
+                -- See the configuration section for more details
+                -- Load luvit types when the `vim.uv` word is found
+                { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+            },
+        })
+        -- setup tem q ser depois do lazydev
+        vim.lsp.enable('lua_ls')
+    end,
+})
