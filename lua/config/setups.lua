@@ -203,3 +203,5 @@ require('tabout').setup {
     exclude = {} -- tabout will ignore these filetypes
 }
 
+require('treesj').setup({})
+

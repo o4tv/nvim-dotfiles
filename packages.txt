@@ -29,3 +29,4 @@ j-hui/fidget.nvim
 folke/lazydev.nvim
 norcalli/nvim-colorizer.lua
 abecodes/tabout.nvim
+Wansmer/treesj
