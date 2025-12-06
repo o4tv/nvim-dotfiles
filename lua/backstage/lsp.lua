@@ -51,6 +51,7 @@ require('mason-tool-installer').setup({
         'jdtls',
         'ts_ls',
         'sqlls',
+        'prettier'
     },
     integrations = {
         ['mason-lspconfig'] = true,

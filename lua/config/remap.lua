@@ -152,9 +152,35 @@ map('n', '<leader>bd', '<Cmd>BufferOrderByDirectory<CR>',    { noremap = true, s
 map('n', '<leader>bl', '<Cmd>BufferOrderByLanguage<CR>',     { noremap = true, silent = true, desc = "Order by language" })
 map('n', '<leader>bw', '<Cmd>BufferOrderByWindowNumber<CR>', { noremap = true, silent = true, desc = "Order by window number" })
 
+-- treesj
+vim.keymap.set(
+    'n', '<leader>ctm',
+    require('treesj').toggle,
+    { desc = "SoJ code block" }
+)
+vim.keymap.set(
+    'n', '<leader>ctr',
+    function()
+        require('treesj').toggle({ split = { recursive = true } })
+    end,
+    { desc = "SoJ code block recursively" }
+)
+vim.keymap.set(
+    'n', '<leader>cts',
+    require('treesj').split,
+    { desc = "Split code block" }
+)
+vim.keymap.set(
+    'n', '<leader>ctj',
+    require('treesj').join,
+    { desc = "Join code block" }
+)
 
--- treesj recursive
-vim.keymap.set('n', '<leader>M', function()
-    require('treesj').toggle({ split = { recursive = true } })
-end)
-
+-- conform(formatters)
+vim.keymap.set(
+    { "n", "i" }, '<leader>cf',
+    function ()
+        require("conform").format()
+    end,
+    { desc = 'format code' }
+)
