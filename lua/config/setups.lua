@@ -34,7 +34,15 @@ require("nvim-tree").setup({
     filters = {
         dotfiles = true,
     },
+    sync_root_with_cwd = true,
+    respect_buf_cwd = true,
+    update_focused_file = {
+        enable = true,
+        update_root = true
+    },
 })
+
+require('telescope').load_extension('projects')
 
 -- funcionalidades
 require('render-markdown').setup({
@@ -147,6 +155,11 @@ require("dashboard").setup({
                 key = 'f',
             },
             {
+                desc = 'projects',
+                action = 'Telescope projects',
+                key = 'p',
+            },
+            {
                 desc = 'quit',
                 action = 'q',
                 key = 'q',
@@ -205,3 +218,4 @@ require('tabout').setup {
 
 require('treesj').setup({})
 
+require("project_nvim").setup({})

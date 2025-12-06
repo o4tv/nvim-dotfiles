@@ -30,3 +30,4 @@ folke/lazydev.nvim
 norcalli/nvim-colorizer.lua
 abecodes/tabout.nvim
 Wansmer/treesj
+ahmedkhalf/project.nvim
