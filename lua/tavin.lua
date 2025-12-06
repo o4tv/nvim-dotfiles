@@ -1,11 +1,10 @@
-require 'backstage.pack'
-require 'backstage.cmp'
-require 'backstage.lsp'
-require 'backstage.formatters'
-require 'skin.theme'
-require 'config.setups'
-require 'config.remap'
-require 'config.options'
-require 'exec.autocmds'
-require 'exec.VeryLazyTrigger'
-
+require('backstage.pack')
+require('backstage.cmp')
+require('backstage.lsp')
+require('backstage.formatters')
+require('skin.theme')
+require('config.setups')
+require('config.remap')
+require('config.options')
+require('exec.autocmds')
+require('exec.VeryLazyTrigger')

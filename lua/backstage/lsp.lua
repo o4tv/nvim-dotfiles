@@ -4,18 +4,18 @@ local servers = {
     lua_ls = {
         settings = {
             Lua = {
-        --         workspace = {
-        --             checkThirdParty = false,
-        --             -- library = vim.api.nvim_get_runtime_file("", true),
-        --             -- library = {
-        --             --     vim.env.VIMRUNTIME,
-        --             -- },
-        --             maxPreload = 2000,
-        --             preloadFileSize = 1000,
-        --         },
+                --         workspace = {
+                --             checkThirdParty = false,
+                --             -- library = vim.api.nvim_get_runtime_file("", true),
+                --             -- library = {
+                --             --     vim.env.VIMRUNTIME,
+                --             -- },
+                --             maxPreload = 2000,
+                --             preloadFileSize = 1000,
+                --         },
                 telemetry = { enable = false },
             },
-        }
+        },
     },
     pyright = {},
     clangd = {},
@@ -32,8 +32,8 @@ for server, config in pairs(servers) do
 end
 
 -- setup do mason + ativaçao automatica de cada ls
-require("mason").setup()
-require("mason-lspconfig").setup({
+require('mason').setup()
+require('mason-lspconfig').setup({
     automatic_enable = true,
 })
 require('mason-tool-installer').setup({
@@ -51,7 +51,7 @@ require('mason-tool-installer').setup({
         'jdtls',
         'ts_ls',
         'sqlls',
-        'prettier'
+        'prettier',
     },
     integrations = {
         ['mason-lspconfig'] = true,
@@ -64,17 +64,18 @@ vim.diagnostic.config({
     update_in_insert = false,
     virtual_text = {
         spacing = 4,
-        source = "if_many",
-        prefix = "●",
+        source = 'if_many',
+        prefix = '●',
     },
     severity_sort = true,
     signs = true,
 })
 
--- nao sei pq dá esse warning
-require("nvim-treesitter.configs").setup({
-    auto_install = true
+require('nvim-treesitter.configs').setup({
+    highlight = {
+        enable = true,
+    },
+    auto_install = true,
 })
 
-require("fidget").setup({})
-
+require('fidget').setup({})

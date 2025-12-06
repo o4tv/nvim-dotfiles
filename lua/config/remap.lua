@@ -68,7 +68,6 @@ wk.add({
         { '<leader>fb', builtin.buffers, desc = 'Buffers' },
         { '<leader>fh', builtin.help_tags, desc = 'Help Tags' },
         { '<leader>fr', builtin.oldfiles, desc = 'Recent Files' },
-        { '<M-r>', builtin.oldfiles, desc = 'Recent Files', hidden = true },
 
         { '<leader>b', group = 'buffers' },
         -- Previous/next
@@ -150,10 +149,20 @@ wk.add({
         { '<M-S-c>', '"+y', desc = 'copy selection to system' },
         { '<M-S-x>', '"+d', desc = 'cut selection to system' },
     },
-})
 
--- hyprctl switchxkblayout by-tech-gaming-keyboard-1 next
--- vim.keymap.set({ 'n', 'i', 'v' }, '<C-i>', function()
---     vim.system({ 'hyprctl', 'switchxkblayout', 'by-tech-gaming-keyboard', 'next' })
---     vim.system({ 'hyprctl', 'switchxkblayout', 'by-tech-gaming-keyboard-1', 'next' })
--- end, { desc = 'kb layout' })
+    { '<leader>k', group = 'which-key', hidden = true },
+    {
+        '<leader>k?',
+        function()
+            require('which-key').show({ global = false })
+        end,
+        desc = 'Buffer Local Keymaps (which-key)',
+    },
+    {
+        '<leader>k!',
+        function()
+            require('which-key').show({ global = true })
+        end,
+        desc = 'Buffer Global Keymaps (which-key)',
+    },
+})

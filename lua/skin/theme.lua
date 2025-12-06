@@ -1,10 +1,10 @@
-require("tokyonight").setup({
+require('tokyonight').setup({
     transparent = true,
     styles = {
-        sidebars = "transparent",
-        floats = "transparent",
-    }
+        sidebars = 'transparent',
+        floats = 'transparent',
+    },
 })
 
-vim.cmd.colorscheme("tokyonight")
-require 'skin.transparency'
+vim.cmd.colorscheme('tokyonight')
+require('skin.transparency')

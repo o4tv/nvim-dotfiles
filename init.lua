@@ -1,1 +1,1 @@
-require 'tavin'
+require('tavin')
