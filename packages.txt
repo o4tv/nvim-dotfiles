@@ -19,7 +19,6 @@ tadmccorkle/markdown.nvim
 folke/which-key.nvim
 iamcco/markdown-preview.nvim
 3rd/image.nvim
-nvimdev/dashboard-nvim
 lewis6991/gitsigns.nvim
 nvim-lualine/lualine.nvim
 romgrk/barbar.nvim
@@ -31,3 +30,4 @@ norcalli/nvim-colorizer.lua
 abecodes/tabout.nvim
 Wansmer/treesj
 ahmedkhalf/project.nvim
+goolord/alpha-nvim

@@ -1,5 +1,9 @@
 {
   "plugins": {
+    "alpha-nvim": {
+      "rev": "3979b01cb05734331c7873049001d3f2bb8477f4",
+      "src": "https://github.com/goolord/alpha-nvim"
+    },
     "barbar.nvim": {
       "rev": "fb4369940a07dda35fa4d7f54cf4a36aa00440e6",
       "src": "https://github.com/romgrk/barbar.nvim"

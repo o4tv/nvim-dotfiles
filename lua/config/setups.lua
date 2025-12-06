@@ -135,45 +135,37 @@ require('gitsigns').setup{
   end
 }
 
--- style
-require("dashboard").setup({
-    theme = 'hyper',
-    config = {
-        packages = { enable = false },
-        week_header = {
-            enable = true,
-        },
-        shortcut = {
-            {
-                desc = 'live grep',
-                action = 'Telescope live_grep',
-                key = 's',
-            },
-            {
-                desc = 'files',
-                action = 'Telescope find_files',
-                key = 'f',
-            },
-            {
-                desc = 'projects',
-                action = 'Telescope projects',
-                key = 'p',
-            },
-            {
-                desc = 'quit',
-                action = 'q',
-                key = 'q',
-            }
-        },
-        project = {
-            enable = true,
-            limit = 8,
-            action = 'Telescope find_files cwd='
-        },
-        footer = {},
-    },
+local dashboard = require("alpha.themes.dashboard")
+dashboard.section.header.val = {
+    "▄▄▄█████▓ ▄▄▄    ██▒   █▓ ██▓ ███▄    █ ",
+    "▓  ██▒ ▓▒▒████▄ ▓██░   █▒▓██▒ ██ ▀█   █ ",
+    "▒ ▓██░ ▒░▒██  ▀█▄▓██  █▒░▒██▒▓██  ▀█ ██▒",
+    "░ ▓██▓ ░ ░██▄▄▄▄██▒██ █░░░██░▓██▒  ▐▌██▒",
+    "  ▒██▒ ░  ▓█   ▓██▒▒▀█░  ░██░▒██░   ▓██░",
+    "  ▒ ░░    ▒▒   ▓▒█░░ ▐░  ░▓  ░ ▒░   ▒ ▒ ",
+    "    ░      ▒   ▒▒ ░░ ░░   ▒ ░░ ░░   ░ ▒░",
+    "  ░        ░   ▒     ░░   ▒ ░   ░   ░ ░ ",
+    "               ░  ░   ░   ░           ░ ",
+    "                     ░                  ",
+}
+dashboard.section.footer.val = {
+    "                 ainn... nobru apelaoooo",
+    " ",
+    "                         - Apelão, Nobru",
+}
 
-})
+dashboard.section.buttons.val = {
+    dashboard.button("f", "󰈞  " .. "find file", ":Telescope find_files<CR>"),
+    dashboard.button("p", "  " .. "projects",  ":Telescope projects<CR>"),
+    dashboard.button("r", "  " .. "recent",    ":Telescope oldfiles<CR>"),
+    dashboard.button("h", "?  " .. "find help", ":Telescope help_tags<CR>"),
+    dashboard.button("q", "󰩈  " .. "quit",      ":qa<CR>"),
+}
+
+require("alpha").setup(dashboard.opts)
+vim.cmd([[
+autocmd FileType alpha setlocal nofoldenable
+]])
 
 require("lualine").setup({
     options = {
