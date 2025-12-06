@@ -94,41 +94,41 @@ require('gitsigns').setup{
     end, { desc = 'hunk anterior' })
 
     -- Actions
-    map('n', '<leader>hs', gitsigns.stage_hunk, { desc = 'Stage do hunk atual' })
-    map('n', '<leader>hr', gitsigns.reset_hunk, { desc = 'Reset do hunk atual' })
+    map('n', '<leader>gs', gitsigns.stage_hunk, { desc = 'Stage do hunk atual' })
+    map('n', '<leader>gr', gitsigns.reset_hunk, { desc = 'Reset do hunk atual' })
 
-    map('v', '<leader>hs', function()
+    map('v', '<leader>gs', function()
       gitsigns.stage_hunk({ vim.fn.line('.'), vim.fn.line('v') })
     end, { desc = 'Stage do trecho selecionado' })
 
-    map('v', '<leader>hr', function()
+    map('v', '<leader>gr', function()
       gitsigns.reset_hunk({ vim.fn.line('.'), vim.fn.line('v') })
     end, { desc = 'Reset do trecho selecionado' })
 
-    map('n', '<leader>hS', gitsigns.stage_buffer, { desc = 'Stage do buffer inteiro' })
-    map('n', '<leader>hR', gitsigns.reset_buffer, { desc = 'Reset do buffer inteiro' })
-    map('n', '<leader>hp', gitsigns.preview_hunk, { desc = 'Preview do hunk atual' })
-    map('n', '<leader>hi', gitsigns.preview_hunk_inline, { desc = 'Preview inline do hunk atual' })
+    map('n', '<leader>gS', gitsigns.stage_buffer, { desc = 'Stage do buffer inteiro' })
+    map('n', '<leader>gR', gitsigns.reset_buffer, { desc = 'Reset do buffer inteiro' })
+    map('n', '<leader>gp', gitsigns.preview_hunk, { desc = 'Preview do hunk atual' })
+    map('n', '<leader>gi', gitsigns.preview_hunk_inline, { desc = 'Preview inline do hunk atual' })
 
-    map('n', '<leader>hb', function()
+    map('n', '<leader>gb', function()
       gitsigns.blame_line({ full = true })
     end, { desc = 'Blame completo da linha atual' })
 
-    map('n', '<leader>hd', gitsigns.diffthis, { desc = 'Diff do arquivo atual' })
+    map('n', '<leader>gd', gitsigns.diffthis, { desc = 'Diff do arquivo atual' })
 
-    map('n', '<leader>hD', function()
+    map('n', '<leader>gD', function()
       gitsigns.diffthis('~')
     end, { desc = 'Diff contra o commit anterior' })
 
-    map('n', '<leader>hQ', function()
+    map('n', '<leader>gQ', function()
       gitsigns.setqflist('all')
     end, { desc = 'Enviar todos os hunks para a quickfix list' })
 
-    map('n', '<leader>hq', gitsigns.setqflist, { desc = 'Enviar hunks do buffer para a quickfix list' })
+    map('n', '<leader>gq', gitsigns.setqflist, { desc = 'Enviar hunks do buffer para a quickfix list' })
 
     -- Toggles
     map('n', '<leader>tb', gitsigns.toggle_current_line_blame, { desc = 'Ativar/desativar blame inline' })
-    map('n', '<leader>tw', gitsigns.toggle_word_diff, { desc = 'Ativar/desativar diff por palavra' })
+    map('n', '<leader>td', gitsigns.toggle_word_diff, { desc = 'Ativar/desativar diff por palavra' })
 
     -- Text object
     map({'o', 'x'}, 'ih', gitsigns.select_hunk, { desc = 'Selecionar hunk como text object' })

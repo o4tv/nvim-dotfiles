@@ -19,15 +19,16 @@ vim.api.nvim_create_autocmd("User", {
             preset = "modern",
         })
         wk.add({
+            {'<leader>k', group = 'which-key', hidden = true},
             {
-                "<leader>?",
+                "<leader>k?",
                 function()
                     require("which-key").show({ global = false })
                 end,
                 desc = "Buffer Local Keymaps (which-key)",
             },
             {
-                "<leader>!",
+                "<leader>k!",
                 function()
                     require("which-key").show({ global = true })
                 end,
@@ -35,6 +36,32 @@ vim.api.nvim_create_autocmd("User", {
             },
 
         })
+    end,
+})
+
+-- faz o setup do luals pra editar config do neovim
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "lua", -- O equivalente ao ft="lua"
+    callback = function()
+        require("lazydev").setup({
+            library = {
+                -- See the configuration section for more details
+                -- Load luvit types when the `vim.uv` word is found
+                { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+            },
+        })
+        -- setup tem q ser depois do lazydev
+        vim.lsp.enable('lua_ls')
+    end,
+})
+
+---- QOL
+-- highlight no texto yankado
+vim.api.nvim_create_autocmd('TextYankPost', {
+    desc = 'Highlights text when yanking',
+    group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+    callback = function()
+        vim.hl.on_yank()
     end,
 })
 
@@ -64,18 +91,3 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
--- faz o setup do luals pra editar config do neovim
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = "lua", -- O equivalente ao ft="lua"
-    callback = function()
-        require("lazydev").setup({
-            library = {
-                -- See the configuration section for more details
-                -- Load luvit types when the `vim.uv` word is found
-                { path = "${3rd}/luv/library", words = { "vim%.uv" } },
-            },
-        })
-        -- setup tem q ser depois do lazydev
-        vim.lsp.enable('lua_ls')
-    end,
-})

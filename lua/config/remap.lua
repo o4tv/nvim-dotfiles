@@ -1,75 +1,6 @@
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
-vim.keymap.set("n", "<leader>cd", "<cmd>cd %:p:h<CR>")
--- vim.keymap.set("n", "<leader>wq", "<cmd>wq<CR>")
-vim.api.nvim_set_keymap("n", "q", "<Cmd>qa<CR>", { noremap = false })
-vim.api.nvim_set_keymap("n", "<C-q>", "<Cmd>q<CR>", { noremap = false })
-vim.api.nvim_set_keymap("n", "Ç", ":", { noremap = false })
-vim.api.nvim_set_keymap("n", "<leader>r", "<Cmd>restart<CR>", { noremap = true })
-vim.keymap.set("n", "<leader>w", "<cmd>w<CR>")
-vim.keymap.set({"n", "i"}, "<M-S-q>", "<cmd>q<CR>")
-
-vim.keymap.set("n", "<leader>tw", function() vim.wo.wrap = not vim.wo.wrap end, { desc = "Toggle wrap" })
-vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
-
-vim.api.nvim_create_autocmd("TextYankPost", {
-  desc = "Highlights text when yanking",
-  group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
-  callback = function()
-    vim.hl.on_yank()
-  end,
-})
-
--- copiar e recortar selecao
-vim.keymap.set({"v", "s"}, "<M-S-c>", '"+y', { noremap = true, silent = true })
-vim.keymap.set({"v", "s"}, "<M-S-x>", '"+d', { noremap = true, silent = true })
--- copiar e colar linha
-vim.keymap.set("n", "<M-S-c>", '"+yy', { noremap = true, silent = true })
-vim.keymap.set("n", "<M-S-x>", '"+dd', { noremap = true, silent = true })
-
--- hyprctl switchxkblayout by-tech-gaming-keyboard-1 next
-vim.keymap.set({"n", "i", "v"}, "<C-i>", function()
-    vim.system({"hyprctl", "switchxkblayout", "by-tech-gaming-keyboard", "next"})
-    vim.system({"hyprctl", "switchxkblayout", "by-tech-gaming-keyboard-1", "next"})
-end, { desc = "kb layout" })
-
-local map = vim.api.nvim_set_keymap
-map('n', '<C-h>', '<C-w>h', { noremap = true })
-map('n', '<C-j>', '<C-w>j', { noremap = true })
-map('n', '<C-k>', '<C-w>k', { noremap = true })
-map('n', '<C-l>', '<C-w>l', { noremap = true })
-
-map('n', '<C-Left>', '<C-w><', { noremap = true })
-map('n', '<C-Down>', '<C-w>-', { noremap = true })
-map('n', '<C-Up>', '<C-w>+', { noremap = true })
-map('n', '<C-Right>', '<C-w>>', { noremap = true })
-
--- pros plugin ok
---- flash
-vim.keymap.set({ "n", "x", "o" }, "S", function()
-  require("flash").jump()
-end, { desc = "Flash" })
-
--- vim.keymap.set({ "n", "x", "o" }, "S", function()
---   require("flash").treesitter()
--- end, { desc = "Flash Treesitter" })
-
-vim.keymap.set("o", "r", function()
-  require("flash").remote()
-end, { desc = "Remote Flash" })
-
-vim.keymap.set({ "o", "x" }, "R", function()
-  require("flash").treesitter_search()
-end, { desc = "Treesitter Search" })
-
-vim.keymap.set("c", "<c-s>", function()
-  require("flash").toggle()
-end, { desc = "Toggle Flash Search" })
-
---- limpar plugins não usados pelo vim.pack
 local function pack_clean()
     local active_plugins = {}
     local unused_plugins = {}
@@ -85,102 +16,144 @@ local function pack_clean()
     end
 
     if #unused_plugins == 0 then
-        print("No unused plugins.")
+        print('No unused plugins.')
         return
     end
 
-    local choice = vim.fn.confirm("Remove unused plugins?", "&Yes\n&No", 2)
+    local choice = vim.fn.confirm('Remove unused plugins?', '&Yes\n&No', 2)
     if choice == 1 then
         vim.pack.del(unused_plugins)
     end
 end
-vim.keymap.set("n", "<leader>pc", pack_clean)
 
---- toggle pro nvim tree
-local api = require("nvim-tree.api")
-vim.keymap.set('n', '<leader>e', function ()
-    if vim.bo.filetype == "NvimTree" then
-        api.tree.close()
-    else
-        api.tree.focus()
-    end
-end, { desc = "NvimTree" })
-
---- telescope
 local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
-vim.keymap.set('n', '<leader><leader>', builtin.find_files, { desc = 'Telescope find files' })
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
-vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
+local wk = require('which-key')
 
---- barbar
--- Move to previous/next
-map('n', '<A-h>', '<Cmd>BufferPrevious<CR>', { noremap = true, silent = true, desc = "Buffer previous" })
-map('n', '<A-l>', '<Cmd>BufferNext<CR>',     { noremap = true, silent = true, desc = "Buffer next" })
+wk.add({
+    {
+        mode = { 'n' },
+        { 'q', '<cmd>q<CR>', desc = 'quit' },
+        { 'Q', '<cmd>qa<CR>', desc = 'Quit' },
+        { 'Ç', ':', desc = 'maldito layout brasileiro' },
+        { '<leader>w', '<cmd>w<CR>', desc = 'Buffer Write', hidden = true },
+        { '<M-S-c>', '"+yy', desc = 'copy line to system' },
+        { '<M-S-x>', '"+dd', desc = 'cut line to system' },
+        { '<Esc>', '<cmd>nohlsearch<CR>', desc = 'clear highlight search' },
+        { '<C-h>', '<C-w>h', desc = 'goto the left window' },
+        { '<C-j>', '<C-w>j', desc = 'goto the down window' },
+        { '<C-k>', '<C-w>k', desc = 'goto the up window' },
+        { '<C-l>', '<C-w>l', desc = 'goto the right window' },
+        { '<C-Left>', '<C-w><', desc = 'decrease width' },
+        { '<C-Down>', '<C-w>-', desc = 'descrease height' },
+        { '<C-Up>', '<C-w>+', desc = 'increase height' },
+        { '<C-Right>', '<C-w>>', desc = 'increase width' },
+        { 'S', require('flash').jump, desc = 'Flash', mode = { 'n', 'x', 'o' } },
+        {
+            '<leader>e',
+            function()
+                local api = require('nvim-tree.api')
+                if vim.bo.filetype == 'NvimTree' then
+                    api.tree.close()
+                else
+                    api.tree.focus()
+                end
+            end,
+            desc = 'Explorer',
+            icon = '📁',
+        },
+        { '<leader>f', group = 'file/find' },
+        { '<leader>ff', builtin.find_files, desc = 'Find Files' },
+        { '<leader><leader>', builtin.find_files, desc = 'Find Files', hidden = true },
+        { '<leader>fg', builtin.live_grep, desc = 'Live Grep' },
+        { '<leader>fb', builtin.buffers, desc = 'Buffers' },
+        { '<leader>fh', builtin.help_tags, desc = 'Help Tags' },
+        { '<leader>fr', builtin.oldfiles, desc = 'Recent Files' },
+        { '<M-r>', builtin.oldfiles, desc = 'Recent Files', hidden = true },
 
--- Re-order to previous/next
-map('n', '<A-<>', '<Cmd>BufferMovePrevious<CR>', { noremap = true, silent = true, desc = "Move buffer previous" })
-map('n', '<A->>', '<Cmd>BufferMoveNext<CR>',     { noremap = true, silent = true, desc = "Move buffer next" })
+        { '<leader>b', group = 'buffers' },
+        -- Previous/next
+        { '<A-h>', '<Cmd>BufferPrevious<CR>', desc = 'Buffer previous' },
+        { '<A-l>', '<Cmd>BufferNext<CR>', desc = 'Buffer next' },
+        -- Move
+        { '<A-<>', '<Cmd>BufferMovePrevious<CR>', desc = 'Move buffer previous' },
+        { '<A->>', '<Cmd>BufferMoveNext<CR>', desc = 'Move buffer next' },
+        -- Goto buffer positions
+        { '<A-1>', '<Cmd>BufferGoto 1<CR>', desc = 'Go to buffer 1' },
+        { '<A-2>', '<Cmd>BufferGoto 2<CR>', desc = 'Go to buffer 2' },
+        { '<A-3>', '<Cmd>BufferGoto 3<CR>', desc = 'Go to buffer 3' },
+        { '<A-4>', '<Cmd>BufferGoto 4<CR>', desc = 'Go to buffer 4' },
+        { '<A-5>', '<Cmd>BufferGoto 5<CR>', desc = 'Go to buffer 5' },
+        { '<A-6>', '<Cmd>BufferGoto 6<CR>', desc = 'Go to buffer 6' },
+        { '<A-7>', '<Cmd>BufferGoto 7<CR>', desc = 'Go to buffer 7' },
+        { '<A-8>', '<Cmd>BufferGoto 8<CR>', desc = 'Go to buffer 8' },
+        { '<A-9>', '<Cmd>BufferGoto 9<CR>', desc = 'Go to buffer 9' },
+        -- Pin
+        { '<A-p>', '<Cmd>BufferPin<CR>', desc = 'Toggle pin buffer' },
+        -- Close
+        { '<M-q>', '<Cmd>BufferClose<CR>', desc = 'Close buffer' },
+        -- Pick mode
+        { '<C-p>', '<Cmd>BufferPick<CR>', desc = 'Pick buffer' },
+        { '<A-d>', '<Cmd>BufferPickDelete<CR>', desc = 'Pick buffer to delete' },
+        -- Sort
+        { '<leader>bb', '<Cmd>BufferOrderByBufferNumber<CR>', desc = 'Order by buffer number' },
+        { '<leader>bn', '<Cmd>BufferOrderByName<CR>', desc = 'Order by name' },
+        { '<leader>bd', '<Cmd>BufferOrderByDirectory<CR>', desc = 'Order by directory' },
+        { '<leader>bl', '<Cmd>BufferOrderByLanguage<CR>', desc = 'Order by language' },
+        { '<leader>bw', '<Cmd>BufferOrderByWindowNumber<CR>', desc = 'Order by window number' },
 
--- Goto buffer in position...
-map('n', '<A-1>', '<Cmd>BufferGoto 1<CR>', { noremap = true, silent = true, desc = "Go to buffer 1" })
-map('n', '<A-2>', '<Cmd>BufferGoto 2<CR>', { noremap = true, silent = true, desc = "Go to buffer 2" })
-map('n', '<A-3>', '<Cmd>BufferGoto 3<CR>', { noremap = true, silent = true, desc = "Go to buffer 3" })
-map('n', '<A-4>', '<Cmd>BufferGoto 4<CR>', { noremap = true, silent = true, desc = "Go to buffer 4" })
-map('n', '<A-5>', '<Cmd>BufferGoto 5<CR>', { noremap = true, silent = true, desc = "Go to buffer 5" })
-map('n', '<A-6>', '<Cmd>BufferGoto 6<CR>', { noremap = true, silent = true, desc = "Go to buffer 6" })
-map('n', '<A-7>', '<Cmd>BufferGoto 7<CR>', { noremap = true, silent = true, desc = "Go to buffer 7" })
-map('n', '<A-8>', '<Cmd>BufferGoto 8<CR>', { noremap = true, silent = true, desc = "Go to buffer 8" })
-map('n', '<A-9>', '<Cmd>BufferGoto 9<CR>', { noremap = true, silent = true, desc = "Go to buffer 9" })
-map('n', '<A-0>', '<Cmd>BufferLast<CR>',   { noremap = true, silent = true, desc = "Go to last buffer" })
+        { '<leader>c', group = 'code' },
+        { '<leader>ct', group = 'tree sj' },
 
--- Pin/unpin buffer
-map('n', '<A-p>', '<Cmd>BufferPin<CR>', { noremap = true, silent = true, desc = "Toggle pin buffer" })
+        -- Treesj
+        { '<leader>ctm', require('treesj').toggle, desc = 'SoJ code block' },
+        {
+            '<leader>ctr',
+            function()
+                require('treesj').toggle({ split = { recursive = true } })
+            end,
+            desc = 'SoJ code block recursively',
+        },
+        { '<leader>cts', require('treesj').split, desc = 'Split code block' },
+        { '<leader>ctj', require('treesj').join, desc = 'Join code block' },
 
--- Close buffer
-map('n', '<M-q>', '<Cmd>BufferClose<CR>', { noremap = true, silent = true, desc = "Close buffer" })
+        -- Conform
+        {
+            '<leader>cf',
+            require('conform').format,
+            desc = 'format code',
+        },
 
--- Magic buffer-picking mode
-map('n', '<C-p>', '<Cmd>BufferPick<CR>',        { noremap = true, silent = true, desc = "Pick buffer" })
-map('n', '<A-d>', '<Cmd>BufferPickDelete<CR>',  { noremap = false, silent = true, desc = "Pick buffer to delete" })
+        { '<leader>r', group = 'run', hidden = true },
+        { '<leader>rr', '<cmd>restart<CR>', desc = 'restart' },
+        { '<leader>rcd', '<cmd>cd %:p:h<CR>', desc = 'root dir on file dir' },
+        { '<leader>rp', group = 'plugins' },
+        { '<leader>rpc', pack_clean, desc = 'clear unused plugins' },
 
--- Sort automatically by...
-map('n', '<leader>bb', '<Cmd>BufferOrderByBufferNumber<CR>', { noremap = true, silent = true, desc = "Order by buffer number" })
-map('n', '<leader>bn', '<Cmd>BufferOrderByName<CR>',         { noremap = true, silent = true, desc = "Order by name" })
-map('n', '<leader>bd', '<Cmd>BufferOrderByDirectory<CR>',    { noremap = true, silent = true, desc = "Order by directory" })
-map('n', '<leader>bl', '<Cmd>BufferOrderByLanguage<CR>',     { noremap = true, silent = true, desc = "Order by language" })
-map('n', '<leader>bw', '<Cmd>BufferOrderByWindowNumber<CR>', { noremap = true, silent = true, desc = "Order by window number" })
+        { '<leader>t', group = 'toggle' },
+        {
+            '<leader>tw',
+            function()
+                vim.wo.wrap = not vim.wo.wrap
+            end,
+            desc = 'Toggle Wrap',
+        },
 
--- treesj
-vim.keymap.set(
-    'n', '<leader>ctm',
-    require('treesj').toggle,
-    { desc = "SoJ code block" }
-)
-vim.keymap.set(
-    'n', '<leader>ctr',
-    function()
-        require('treesj').toggle({ split = { recursive = true } })
-    end,
-    { desc = "SoJ code block recursively" }
-)
-vim.keymap.set(
-    'n', '<leader>cts',
-    require('treesj').split,
-    { desc = "Split code block" }
-)
-vim.keymap.set(
-    'n', '<leader>ctj',
-    require('treesj').join,
-    { desc = "Join code block" }
-)
+        { '<leader>g', group = 'git' },
+    },
+    {
+        mode = { 'v' },
+        { 'J', ":m '>+1<CR>gv=gv", desc = 'move line up' },
+        { 'K', ":m '>+1<CR>gv=gv", desc = 'move line up' },
+    },
+    {
+        mode = { 'i', 'v' },
+        { '<M-S-c>', '"+y', desc = 'copy selection to system' },
+        { '<M-S-x>', '"+d', desc = 'cut selection to system' },
+    },
+})
 
--- conform(formatters)
-vim.keymap.set(
-    { "n", "i" }, '<leader>cf',
-    function ()
-        require("conform").format()
-    end,
-    { desc = 'format code' }
-)
+-- hyprctl switchxkblayout by-tech-gaming-keyboard-1 next
+-- vim.keymap.set({ 'n', 'i', 'v' }, '<C-i>', function()
+--     vim.system({ 'hyprctl', 'switchxkblayout', 'by-tech-gaming-keyboard', 'next' })
+--     vim.system({ 'hyprctl', 'switchxkblayout', 'by-tech-gaming-keyboard-1', 'next' })
+-- end, { desc = 'kb layout' })
