@@ -133,48 +133,6 @@ require('gitsigns').setup({
     end,
 })
 
-local dashboard = require('alpha.themes.dashboard')
-dashboard.section.header.val = {
-    '▄▄▄█████▓ ▄▄▄    ██▒   █▓ ██▓ ███▄    █ ',
-    '▓  ██▒ ▓▒▒████▄ ▓██░   █▒▓██▒ ██ ▀█   █ ',
-    '▒ ▓██░ ▒░▒██  ▀█▄▓██  █▒░▒██▒▓██  ▀█ ██▒',
-    '░ ▓██▓ ░ ░██▄▄▄▄██▒██ █░░░██░▓██▒  ▐▌██▒',
-    '  ▒██▒ ░  ▓█   ▓██▒▒▀█░  ░██░▒██░   ▓██░',
-    '  ▒ ░░    ▒▒   ▓▒█░░ ▐░  ░▓  ░ ▒░   ▒ ▒ ',
-    '    ░      ▒   ▒▒ ░░ ░░   ▒ ░░ ░░   ░ ▒░',
-    '  ░        ░   ▒     ░░   ▒ ░   ░   ░ ░ ',
-    '               ░  ░   ░   ░           ░ ',
-    '                     ░                  ',
-}
-dashboard.section.footer.val = {
-    '                 ainn... nobru apelaoooo',
-    ' ',
-    '                         - Apelão, Nobru',
-}
-
-dashboard.section.buttons.val = {
-    dashboard.button('f', '󰈞  ' .. 'find file', ':Telescope find_files<CR>'),
-    dashboard.button('p', '  ' .. 'projects', ':Telescope projects<CR>'),
-    dashboard.button('r', '  ' .. 'recent', ':Telescope oldfiles<CR>'),
-    dashboard.button('h', '?  ' .. 'find help', ':Telescope help_tags<CR>'),
-    dashboard.button('q', '󰩈  ' .. 'quit', ':qa<CR>'),
-}
-
-require('alpha').setup(dashboard.opts)
-vim.cmd([[
-autocmd FileType alpha setlocal nofoldenable
-]])
-
-require('lualine').setup({
-    options = {
-        theme = 'ayu_mirage',
-        globalstatus = true,
-    },
-    sections = {
-        lualine_x = { 'buffers', 'encoding', 'fileformat', 'filetype' },
-    },
-})
-
 require('barbar').setup({
     sidebar_filetypes = {
         NvimTree = true,
@@ -182,8 +140,6 @@ require('barbar').setup({
 })
 
 require('nvim-surround').setup({})
-
-require('colorizer').setup()
 
 require('tabout').setup({
     tabkey = '<Tab>', -- key to trigger tabout, set to an empty string to disable
