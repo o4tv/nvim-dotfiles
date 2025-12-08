@@ -136,6 +136,7 @@ wk.add({
             end,
             desc = 'Toggle Wrap',
         },
+        { '<leader>tm', '<cmd>MarkdownPreviewToggle<CR>', desc = 'Markdown Preview' },
 
         { '<leader>g', group = 'git' },
     },
