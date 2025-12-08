@@ -45,10 +45,11 @@ require('render-markdown').setup({
     completions = { lsp = { enabled = true } },
 })
 
-require('markdown').setup({})
+require('markdown').setup()
 
 require('image').setup({
     backend = 'kitty', -- or "ueberzug" or "sixel"
+    kitty_method = 'normal',
     processor = 'magick_cli', -- or "magick_rock"
     integrations = {
         markdown = {
