@@ -32,3 +32,4 @@ Wansmer/treesj
 ahmedkhalf/project.nvim
 goolord/alpha-nvim
 stevearc/conform.nvim
+Exafunction/windsurf.vim

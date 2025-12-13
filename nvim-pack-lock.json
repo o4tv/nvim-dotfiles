@@ -135,6 +135,10 @@
     "which-key.nvim": {
       "rev": "3aab2147e74890957785941f0c1ad87d0a44c15a",
       "src": "https://github.com/folke/which-key.nvim"
+    },
+    "windsurf.vim": {
+      "rev": "a8d47ec54fe82df920b2545559f767003e8a7f8d",
+      "src": "https://github.com/Exafunction/windsurf.vim"
     }
   }
 }
