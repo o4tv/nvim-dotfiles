@@ -1,5 +1,5 @@
 -- configuraçao de cada ls
--- vazio = padrao
+-- vazio ou nao aparece = padrao
 local servers = {
     lua_ls = {
         settings = {
@@ -17,11 +17,6 @@ local servers = {
             },
         },
     },
-    pyright = {},
-    clangd = {},
-    jdtls = {},
-    ts_ls = {},
-    sqlls = {},
 }
 
 -- aplicaçao da configuraçao de cada um
@@ -33,6 +28,7 @@ end
 
 -- setup do mason + ativaçao automatica de cada ls
 require('mason').setup()
+-- se o "ls" foi instalado, o lsp sera configurado automaticamente
 require('mason-lspconfig').setup({
     automatic_enable = true,
 })
@@ -52,6 +48,7 @@ require('mason-tool-installer').setup({
         'ts_ls',
         'sqlls',
         'prettier',
+        'nil_ls',
     },
     integrations = {
         ['mason-lspconfig'] = true,
