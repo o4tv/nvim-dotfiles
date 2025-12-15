@@ -69,6 +69,8 @@ wk.add({
         { '<leader>fh', builtin.help_tags, desc = 'Help Tags' },
         { '<leader>fr', builtin.oldfiles, desc = 'Recent Files' },
 
+        { '<leader>fs', 'gg<S-v>G', desc = 'select all', hidden = true },
+
         { '<leader>b', group = 'buffers' },
         -- Previous/next
         { '<A-h>', '<Cmd>BufferPrevious<CR>', desc = 'Buffer previous' },
