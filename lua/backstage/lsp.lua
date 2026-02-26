@@ -48,7 +48,7 @@ require('mason-tool-installer').setup({
         'ts_ls',
         'sqlls',
         'prettier',
-        'nil_ls',
+        -- 'nil_ls',
     },
     integrations = {
         ['mason-lspconfig'] = true,
