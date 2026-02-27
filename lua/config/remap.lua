@@ -48,6 +48,7 @@ wk.add({
         { '<C-Up>', '<C-w>+', desc = 'increase height' },
         { '<C-Right>', '<C-w>>', desc = 'increase width' },
         { 'S', require('flash').jump, desc = 'Flash', mode = { 'n', 'x', 'o' } },
+        { '<leader>lg', '<cmd>LazyGit<CR>', desc = 'LazyGit' },
         {
             '<leader>e',
             function()
