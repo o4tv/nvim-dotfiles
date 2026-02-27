@@ -130,6 +130,7 @@ wk.add({
         { '<leader>rcd', '<cmd>cd %:p:h<CR>', desc = 'root dir on file dir' },
         { '<leader>rp', group = 'plugins' },
         { '<leader>rpc', pack_clean, desc = 'clear unused plugins' },
+        { '<leader>rpu', vim.pack.update, desc = 'update plugins' },
 
         { '<leader>t', group = 'toggle' },
         {
