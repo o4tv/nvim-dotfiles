@@ -178,3 +178,5 @@ require('telescope').setup({
     },
 })
 require('project_nvim').setup({})
+
+require('uv').setup()

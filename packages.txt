@@ -34,3 +34,4 @@ goolord/alpha-nvim
 stevearc/conform.nvim
 kdheepak/lazygit.nvim
 # Exafunction/windsurf.vim
+benomahony/uv.nvim
