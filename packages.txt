@@ -15,7 +15,6 @@ nvim-telescope/telescope.nvim
 nvim-lua/plenary.nvim
 nvim-mini/mini.icons
 MeanderingProgrammer/render-markdown.nvim
-tadmccorkle/markdown.nvim
 folke/which-key.nvim
 iamcco/markdown-preview.nvim
 3rd/image.nvim

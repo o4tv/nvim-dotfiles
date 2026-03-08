@@ -52,10 +52,6 @@
       "rev": "a923f5fc5ba36a3b17e289dc35dc17f66d0548ee",
       "src": "https://github.com/iamcco/markdown-preview.nvim"
     },
-    "markdown.nvim": {
-      "rev": "34bb88989ace6c678abd947662668994219996e0",
-      "src": "https://github.com/tadmccorkle/markdown.nvim"
-    },
     "mason-lspconfig.nvim": {
       "rev": "7d527c76c43f46294de9c19d39c5a86317809b4b",
       "src": "https://github.com/mason-org/mason-lspconfig.nvim"
