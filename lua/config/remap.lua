@@ -36,8 +36,9 @@ wk.add({
         { 'Q', '<cmd>qa<CR>', desc = 'Quit' },
         { 'Ç', ':', desc = 'maldito layout brasileiro' },
         { '<leader>w', '<cmd>w<CR>', desc = 'Buffer Write', hidden = true },
-        { '<M-S-c>', '"+yy', desc = 'copy line to system' },
-        { '<M-S-x>', '"+dd', desc = 'cut line to system' },
+        { 'cy', '"+yy', desc = 'copy line to system' },
+        { 'cd', '"+dd', desc = 'cut line to system' },
+        { 'cp', '"+p', desc = 'paste from system' },
         { '<Esc>', '<cmd>nohlsearch<CR>', desc = 'clear highlight search' },
         { '<C-h>', '<C-w>h', desc = 'goto the left window' },
         { '<C-j>', '<C-w>j', desc = 'goto the down window' },
@@ -125,7 +126,7 @@ wk.add({
             desc = 'format code',
         },
 
-        { '<leader>r', group = 'run', hidden = true },
+        { '<leader>r', group = 'run', hidden = false },
         { '<leader>rr', '<cmd>restart<CR>', desc = 'restart' },
         { '<leader>rcd', '<cmd>cd %:p:h<CR>', desc = 'root dir on file dir' },
         { '<leader>rp', group = 'plugins' },
@@ -143,16 +144,20 @@ wk.add({
         { '<leader>tm', '<cmd>MarkdownPreviewToggle<CR>', desc = 'Markdown Preview' },
 
         { '<leader>g', group = 'git' },
+
+        { '<M-j>', ":m .+1<CR>==", desc = 'move line up' },
+        { '<M-k>', ":m .-2<CR>==", desc = 'move line down' },
     },
     {
         mode = { 'v' },
-        { 'J', ":m '>+1<CR>gv=gv", desc = 'move line up' },
-        { 'K', ":m '>+1<CR>gv=gv", desc = 'move line up' },
+        { 'J', ":m '>+1<CR>gv=gv", desc = 'move line down' },
+        { 'K', ":m '<-2<CR>gv=gv", desc = 'move line up' },
     },
     {
         mode = { 'i', 'v' },
-        { '<M-S-c>', '"+y', desc = 'copy selection to system' },
-        { '<M-S-x>', '"+d', desc = 'cut selection to system' },
+        { 'cy', '"+y', desc = 'copy selection to system' },
+        { 'cd', '"+d', desc = 'cut selection to system' },
+        { 'cp', '"+p', desc = 'paste from system' },
     },
 
     { '<leader>k', group = 'which-key', hidden = true },
