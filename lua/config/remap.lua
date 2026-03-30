@@ -152,14 +152,10 @@ wk.add({
         mode = { 'v' },
         { 'J', ":m '>+1<CR>gv=gv", desc = 'move line down' },
         { 'K', ":m '<-2<CR>gv=gv", desc = 'move line up' },
-    },
-    {
-        mode = { 'i', 'v' },
         { 'cy', '"+y', desc = 'copy selection to system' },
         { 'cd', '"+d', desc = 'cut selection to system' },
         { 'cp', '"+p', desc = 'paste from system' },
     },
-
     { '<leader>k', group = 'which-key', hidden = true },
     {
         '<leader>k?',
