@@ -23,6 +23,18 @@ vim.api.nvim_create_autocmd('User', {
     end,
 })
 
+vim.api.nvim_create_autocmd('User', {
+    pattern = 'VeryLazy',
+    callback = function()
+        require('codex').setup({
+            keymaps = {
+                toggle = '<M-c>',
+                quit = '<C-q>',
+            }
+        })
+    end,
+})
+
 -- faz o setup do luals pra editar config do neovim
 vim.api.nvim_create_autocmd('FileType', {
     pattern = 'lua', -- O equivalente ao ft="lua"

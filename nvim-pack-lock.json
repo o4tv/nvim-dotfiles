@@ -12,6 +12,10 @@
       "rev": "f13226770b4947eb7e66befbeb53c3db39f13e25",
       "src": "https://github.com/saghen/blink.cmp"
     },
+    "codex.nvim": {
+      "rev": "4317788afc091d5e913109c55d5a04f32be4e14a",
+      "src": "https://github.com/kkrampis/codex.nvim"
+    },
     "conform.nvim": {
       "rev": "ffe26e8df8115c9665d24231f8a49fadb2d611ce",
       "src": "https://github.com/stevearc/conform.nvim"

@@ -33,7 +33,7 @@ ahmedkhalf/project.nvim
 goolord/alpha-nvim
 stevearc/conform.nvim
 kdheepak/lazygit.nvim
-# Exafunction/windsurf.vim
 benomahony/uv.nvim
 vyfor/cord.nvim
 dinhhuy258/git.nvim
+kkrampis/codex.nvim
