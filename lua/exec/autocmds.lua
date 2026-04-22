@@ -35,6 +35,25 @@ vim.api.nvim_create_autocmd('User', {
     end,
 })
 
+-- builds
+vim.api.nvim_create_autocmd("PackChanged", {
+    callback = function(ev)
+        local name = ev.data.spec.name
+        local kind = ev.data.kind
+        local logfile = vim.fn.getcwd() .. "/packchanged.log"
+
+        function log(s)
+            vim.fn.writefile({s}, logfile, "a")
+        end
+
+        if kind ~= "install" and kind ~= "update" then
+            return
+        end
+
+        log(string.format("name=%s kind=%s", tostring(name), tostring(kind)))
+    end
+})
+
 -- faz o setup do luals pra editar config do neovim
 vim.api.nvim_create_autocmd('FileType', {
     pattern = 'lua', -- O equivalente ao ft="lua"

@@ -132,6 +132,7 @@ wk.add({
         { '<leader>rp', group = 'plugins' },
         { '<leader>rpc', pack_clean, desc = 'clear unused plugins' },
         { '<leader>rpu', vim.pack.update, desc = 'update plugins' },
+        { '<leader>rpU', function() vim.pack.update(nil, {force = true}) end, desc = 'force update plugins' },
 
         { '<leader>t', group = 'toggle' },
         {
