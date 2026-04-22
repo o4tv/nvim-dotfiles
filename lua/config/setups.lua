@@ -305,3 +305,6 @@ require('cord').setup({
 require('project_nvim').setup({})
 
 require('uv').setup()
+
+require('go').setup({})
+

@@ -38,3 +38,5 @@ benomahony/uv.nvim
 vyfor/cord.nvim
 dinhhuy258/git.nvim
 kkrampis/codex.nvim
+ray-x/go.nvim
+ray-x/guihua.lua

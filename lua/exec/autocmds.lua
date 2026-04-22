@@ -35,6 +35,15 @@ vim.api.nvim_create_autocmd('User', {
     end,
 })
 
+local format_sync_grp = vim.api.nvim_create_augroup("GoFormat", {})
+vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = "*.go",
+    callback = function()
+    require('go.format').goimports()
+    end,
+    group = format_sync_grp,
+})
+
 -- builds
 vim.api.nvim_create_autocmd("PackChanged", {
     callback = function(ev)
@@ -48,6 +57,18 @@ vim.api.nvim_create_autocmd("PackChanged", {
 
         if kind ~= "install" and kind ~= "update" then
             return
+        end
+
+        -- equivalente: run = 'cd lua/fzy && make'
+        if name == "guihua.lua" then
+            vim.system({ "make" }, { cwd = ev.data.path .. "/lua/fzy" }):wait()
+        end
+
+        -- equivalente: build = ':lua require("go.install").update_all_sync()'
+        if name == "go.nvim" then
+            pcall(function()
+              require("go.install").update_all_sync()
+            end)
         end
 
         log(string.format("name=%s kind=%s", tostring(name), tostring(kind)))

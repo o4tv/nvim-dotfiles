@@ -40,7 +40,7 @@ require('mason-tool-installer').setup({
         ---- ativado posteriormente no lazydev
         -- 'lua_ls',
         'stylua',
-        'shellcheck',
+--        'shellcheck',
         'editorconfig-checker',
         'shfmt',
         'pyright',
@@ -48,7 +48,7 @@ require('mason-tool-installer').setup({
         'ts_ls',
         'sqlls',
         'prettier',
-        -- 'nil_ls',
+        'gopls',
     },
     integrations = {
         ['mason-lspconfig'] = true,
