@@ -30,7 +30,11 @@ end
 require('mason').setup()
 -- se o "ls" foi instalado, o lsp sera configurado automaticamente
 require('mason-lspconfig').setup({
-    automatic_enable = true,
+    automatic_enable = {
+        exclude = {
+            "lua_ls"
+        }
+    },
 })
 require('mason-tool-installer').setup({
     ensure_installed = {
@@ -38,7 +42,7 @@ require('mason-tool-installer').setup({
         'clangd',
         ---- desativado por uma excessao na versao de uma lib
         ---- ativado posteriormente no lazydev
-        -- 'lua_ls',
+        'lua_ls',
         'stylua',
 --        'shellcheck',
         'editorconfig-checker',
