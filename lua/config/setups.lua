@@ -1,3 +1,7 @@
+require('vim._core.ui2').enable({
+    enable = true
+})
+
 -- QOL
 require('nvim-autopairs').setup({})
 
