@@ -51,7 +51,7 @@ vim.api.nvim_create_autocmd("PackChanged", {
         local kind = ev.data.kind
         local logfile = vim.fn.getcwd() .. "/packchanged.log"
 
-        function log(s)
+        local function log(s)
             vim.fn.writefile({s}, logfile, "a")
         end
 
