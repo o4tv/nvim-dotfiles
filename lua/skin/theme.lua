@@ -9,5 +9,4 @@ require('tokyonight').setup({
 vim.cmd.colorscheme('tokyonight')
 require('colorizer').setup()
 require('skin.transparency')
-require('skin.dashboard')
 require('skin.lualine')
