@@ -19,7 +19,7 @@ MeanderingProgrammer/render-markdown.nvim
 tadmccorkle/markdown.nvim
 folke/which-key.nvim
 iamcco/markdown-preview.nvim
-# 3rd/image.nvim
+3rd/image.nvim
 lewis6991/gitsigns.nvim
 nvim-lualine/lualine.nvim
 romgrk/barbar.nvim
