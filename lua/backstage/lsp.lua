@@ -4,10 +4,10 @@ local servers = {
     lua_ls = {
         settings = {
             Lua = {
-                --         workspace = {
-                --             checkThirdParty = false,
-                --             -- library = vim.api.nvim_get_runtime_file("", true),
-                --             -- library = {
+                -- workspace = {
+                --         checkThirdParty = false,
+                --         -- library = vim.api.nvim_get_runtime_file("", true),
+                --         -- library = {
                 --             --     vim.env.VIMRUNTIME,
                 --             -- },
                 --             maxPreload = 2000,
@@ -17,6 +17,30 @@ local servers = {
             },
         },
     },
+    emmet_ls = {
+        filetypes = {
+            "css",
+            "eruby",
+            "html",
+            "javascript",
+            "javascriptreact",
+            "less",
+            "sass",
+            "scss",
+            "svelte",
+            "pug",
+            "typescriptreact",
+            "vue",
+        },
+        init_options = {
+            html = {
+                options = {
+                    -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
+                    ["bem.enabled"] = true,
+                },
+            },
+        }
+    }
 }
 
 -- aplicaçao da configuraçao de cada um
@@ -50,6 +74,8 @@ require('mason-tool-installer').setup({
         'pyright',
         'jdtls',
         'ts_ls',
+        'html-lsp',
+        'eslint-lsp',
         'sqlls',
         'prettier',
         'gopls',
