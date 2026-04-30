@@ -13,6 +13,7 @@ require('blink.cmp').setup({
             auto_brackets = { enabled = true },
         },
     },
+    snippets = { preset = 'luasnip' },
     sources = {
         default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer' },
         providers = {

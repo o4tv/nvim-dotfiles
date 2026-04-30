@@ -2,6 +2,23 @@ vim.api.nvim_create_autocmd('User', {
     pattern = 'VeryLazy',
     callback = function()
         require('flash') -- carregamento real do plugin
+
+        local wk = require('which-key')
+        wk.setup({
+            preset = 'helix',
+        })
+
+        require('codex').setup({
+            keymaps = {
+                toggle = '<M-c>',
+                quit = '<C-q>',
+            }
+        })
+
+        require('luasnip.loaders.from_vscode').lazy_load()
+        require('luasnip.loaders.from_vscode').lazy_load({ paths = { vim.fn.stdpath 'config' .. '/snippets' } })
+        require('luasnip').filetype_extend("typescriptreact", { "html" })
+        print("ok ta")
     end,
 })
 
@@ -10,28 +27,6 @@ vim.api.nvim_create_autocmd('FileType', {
     pattern = '*',
     callback = function()
         pcall(vim.treesitter.start)
-    end,
-})
-
-vim.api.nvim_create_autocmd('User', {
-    pattern = 'VeryLazy',
-    callback = function()
-        local wk = require('which-key')
-        wk.setup({
-            preset = 'helix',
-        })
-    end,
-})
-
-vim.api.nvim_create_autocmd('User', {
-    pattern = 'VeryLazy',
-    callback = function()
-        require('codex').setup({
-            keymaps = {
-                toggle = '<M-c>',
-                quit = '<C-q>',
-            }
-        })
     end,
 })
 
@@ -71,7 +66,11 @@ vim.api.nvim_create_autocmd("PackChanged", {
             end)
         end
 
-        log(string.format("name=%s kind=%s", tostring(name), tostring(kind)))
+        if name == "luasnip" then
+            vim.system({ "make", "install_jsregexp" }, { cwd = ev.data.path }):wait()
+        end
+
+        -- log(string.format("name=%s kind=%s", tostring(name), tostring(kind)))
     end
 })
 

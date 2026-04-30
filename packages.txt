@@ -40,3 +40,4 @@ dinhhuy258/git.nvim
 kkrampis/codex.nvim
 ray-x/go.nvim
 ray-x/guihua.lua
+L3MON4D3/LuaSnip
