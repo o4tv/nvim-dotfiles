@@ -172,4 +172,5 @@ wk.add({
         end,
         desc = 'Buffer Global Keymaps (which-key)',
     },
+        { '<leader>tl', group = 'toggle layout' },
 })
