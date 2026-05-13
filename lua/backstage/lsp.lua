@@ -17,6 +17,13 @@ local servers = {
             },
         },
     },
+    rust_analyzer = {
+      settings = {
+        ['rust-analyzer'] = {
+          cargo = { allFeatures = true },
+        },
+      },
+    },
     emmet_ls = {
         filetypes = {
             "css",
@@ -79,6 +86,7 @@ require('mason-tool-installer').setup({
         'sqlls',
         'prettier',
         'gopls',
+        'rust-analyzer'
     },
     integrations = {
         ['mason-lspconfig'] = true,
