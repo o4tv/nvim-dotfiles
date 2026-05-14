@@ -18,7 +18,6 @@ vim.api.nvim_create_autocmd('User', {
         require('luasnip.loaders.from_vscode').lazy_load()
         require('luasnip.loaders.from_vscode').lazy_load({ paths = { vim.fn.stdpath 'config' .. '/snippets' } })
         require('luasnip').filetype_extend("typescriptreact", { "html" })
-        print("ok ta")
     end,
 })
 
