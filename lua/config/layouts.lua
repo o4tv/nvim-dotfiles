@@ -1,23 +1,54 @@
 local M = {}
 
--- Inicializa a tabela global única se ela não existir
 if vim.g.layout_configs == nil then
   vim.g.layout_configs = {}
 end
 
---- Função auxiliar para atualizar um valor dentro da tabela global do Neovim
---- Como tabelas no vim.g são imutáveis na atribuição direta de campos,
---- precisamos reatribuir a tabela inteira ou usar uma variável local.
-local function update_global_config(key, value)
+local registry = {}
+
+local function update_global_config(id, value)
   local configs = vim.g.layout_configs
-  configs[key] = value
+  configs[id] = value
   vim.g.layout_configs = configs
 end
 
+--- Função para definir explicitamente o estado de um layout sync
+--- @param id string O nome do layout (ex: "canary", "portuguese")
+--- @param state boolean true para ligar, false para desligar
+function M.set(id, state)
+  id = string.lower(id)
+  local layout = registry[id]
+
+  if not layout then
+    vim.notify("Layout sync '" .. id .. "' não está registrado.", vim.log.levels.ERROR)
+    return
+  end
+
+  update_global_config(id, state)
+
+  if state then
+    layout.sync_fn() -- Roda a função de sincronização registrada
+    vim.notify(layout.name .. " sync: ON", vim.log.levels.INFO)
+  else
+    layout.reset_fn() -- Limpa o estado aplicado para forçar re-sincronização quando religar
+    vim.notify(layout.name .. " sync: OFF", vim.log.levels.WARN)
+  end
+end
+
+--- Função para alternar (toggle) o estado de um layout sync
+--- @param id string O nome do layout
+function M.toggle(id)
+  id = string.lower(id)
+  local current_state = vim.g.layout_configs[id]
+  
+  -- Reutiliza a função set invertendo o estado atual
+  M.set(id, not current_state)
+end
+
+--- Registra e cria as configurações de um novo layout
 function M.create_toggle(opts)
   local id = string.lower(opts.name)
   
-  -- Define o estado inicial se não houver
   if vim.g.layout_configs[id] == nil then
     update_global_config(id, false)
   end
@@ -31,7 +62,6 @@ function M.create_toggle(opts)
   end
 
   local function sync_layout()
-    -- Busca o status atualizado na tabela global
     if not vim.g.layout_configs[id] then
       state.applied = nil
       return
@@ -45,24 +75,22 @@ function M.create_toggle(opts)
     end
   end
 
-  local function toggle_fn()
-    local current_status = vim.g.layout_configs[id]
-    update_global_config(id, not current_status)
+  -- Registra as funções internas no 'registry' para que M.set e M.toggle possam usá-las
+  registry[id] = {
+    name = opts.name,
+    sync_fn = sync_layout,
+    reset_fn = function() state.applied = nil end,
+  }
 
-    if vim.g.layout_configs[id] then
-      sync_layout()
-      vim.notify(opts.name .. " sync: ON", vim.log.levels.INFO)
-    else
-      state.applied = nil
-      vim.notify(opts.name .. " sync: OFF", vim.log.levels.WARN)
-    end
-  end
-
-  -- Registro de Comandos, Keymaps e Autocmds (mesma lógica anterior)
-  vim.api.nvim_create_user_command(opts.name .. "Toggle", toggle_fn, {})
+  -- Cria os comandos do Neovim usando as novas funções expostas
+  vim.api.nvim_create_user_command(opts.name .. "Toggle", function() M.toggle(id) end, {})
   
+  -- Bônus: Agora é trivial criar comandos para Setar explicitamente
+  vim.api.nvim_create_user_command(opts.name .. "On", function() M.set(id, true) end, {})
+  vim.api.nvim_create_user_command(opts.name .. "Off", function() M.set(id, false) end, {})
+
   if opts.keymap then
-    vim.keymap.set("n", opts.keymap, toggle_fn, { desc = "Toggle " .. opts.name })
+    vim.keymap.set("n", opts.keymap, function() M.toggle(id) end, { desc = "Toggle " .. opts.name })
   end
 
   local group = vim.api.nvim_create_augroup(opts.name .. "SyncGroup", { clear = true })
@@ -75,7 +103,7 @@ end
 -- Kanata
 M.create_toggle({
   name = "Canary",
-  cmd_fn = function(v) return { "/home/tabin/.local/bin/kanata_layer", v } end,
+  cmd_fn = function(v) return { "/home/tabin/.local/bin/hyprkan", "-p", "7071", "--change-layer", v } end,
   val_insert = "canary",
   val_normal = "qwerty",
   keymap = "<leader>tlc"
